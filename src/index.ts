@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 
-app.use("/api/register", userRoutes)
+app.use("/api/auth", userRoutes)
 
 app.listen(4000, ()=>{
     console.log("Server is running on port 7000");
