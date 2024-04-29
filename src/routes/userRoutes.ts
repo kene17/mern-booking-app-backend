@@ -9,6 +9,7 @@ const router = express.Router();
 
 router.post('/signup', validateUser, userController.createNewUser);
 router.post('/signin', validateLoginUser, userController.loginUser);
+router.post('/signout', userController.logout);
 router.get(
   '/validate-token',
   verifyTokenMiddleware,

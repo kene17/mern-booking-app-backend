@@ -5,9 +5,11 @@ import userRoutes from './routes/userRoutes';
 import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
 
-mongoose.connect(process.env.MONGODB_CONNECTION_STRING as string).then(() => {
-  console.log('connected to database!');
-});
+mongoose
+  .connect(process.env.MONGODB_CONNECTION_STRING as string)
+  .then(() =>
+    console.log('connected to database:', process.env.MONGODB_CONNECTION_STRING)
+  );
 
 const app = express();
 app.use(express.json());

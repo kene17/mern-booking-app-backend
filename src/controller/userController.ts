@@ -63,8 +63,15 @@ const loginUser = async (req: Request, res: Response) => {
   }
 };
 
+const logout = async (req: Request, res: Response) => {
+  res.cookie('auth_token', '', {
+    expires: new Date(0),
+  });
+  res.json({ message: 'Logged out successfully' });
+};
+
 const verifyToken = (req: Request, res: Response) => {
   res.status(200).send({ userId: req.userId });
 };
 
-export default { createNewUser, loginUser, verifyToken };
+export default { createNewUser, loginUser, verifyToken, logout };
