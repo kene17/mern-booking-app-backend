@@ -4,6 +4,7 @@ import 'dotenv/config';
 import userRoutes from './routes/userRoutes';
 import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
+import path from 'path';
 
 mongoose
   .connect(process.env.MONGODB_CONNECTION_STRING as string)
@@ -22,9 +23,10 @@ app.use(
     credentials: true,
   })
 );
+app.use(express.static(path.join(__dirname, '../../frontend/dist')));
 
 app.use('/api/auth', userRoutes);
 
 app.listen(4000, () => {
-  console.log('Server is running on port 7000');
+  console.log('Server is running on port 4000');
 });
